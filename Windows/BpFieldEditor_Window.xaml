@@ -1,0 +1,18 @@
+﻿<Window x:Class="BP_GTAV_WpfApp.Windows.BpFieldEditor_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BP_GTAV_WpfApp.Windows"
+        mc:Ignorable="d"
+        Title="BpFieldEditor_Window" Height="100" Width="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="bpFieldTextBox" Grid.Row="0" Grid.Column="0" FontSize="20" Text="0" PreviewTextInput="BpFieldTextBox_PreviewTextInput" TextChanged="BpFieldTextBox_TextChanged"/>
+
+        <Button Grid.Row="1" Grid.Column="0" x:Name="vipButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Оставить" Click="InsertButton_Click" />
+    </Grid>
+</Window>
