@@ -39,9 +39,9 @@ namespace BP_GTAV_WpfApp.Windows
 
             // Удаляем пробелы и форматируем заново
             string digitsOnly = Regex.Replace(textBox.Text, @"\s+", ""); // Убираем пробелы
-            string formatted = NumberFormater.FormatNumberWithMask(digitsOnly);
+            //string formatted = NumberFormater.FormatNumberWithMask(digitsOnly);
 
-            textBox.Text = formatted;
+            textBox.Text = digitsOnly;
 
             // Восстанавливаем позицию курсора
             textBox.CaretIndex = caretIndex > textBox.Text.Length ? textBox.Text.Length : caretIndex;

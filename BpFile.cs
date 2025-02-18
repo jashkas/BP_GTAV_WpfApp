@@ -31,15 +31,24 @@ namespace BP_GTAV_WpfApp
                 JsonSerializer serializer = new JsonSerializer();
                 data = (List<BpData>)serializer.Deserialize(file, typeof(List<BpData>));
             }
-            // Добавление последнего с количеством бипишек указанных в предпоследнем
+            // Если в списке есть элементы
             if (data.Count > 0) 
             {
-                BpData last = data.Last();
-                Add(new BpData(last.Bp));
+                // Узнаем общее количество бипишек
+                BpData lastData = data.Last(); // взяли последний элемент
+                BpData bpData = new BpData();  // создали новый
+                bpData.Bp = lastData.Bp; // записываем в новый количество бипишек
+                // Получаем индекс записи с такой же датой
+                var dateExistIndex = data.FindIndex(d => d.Date == bpData.Date);
+                if (dateExistIndex == -1)
+                {
+                    data.Add(bpData);
+                }
             }
             else
             {
-                Add(new BpData());
+                // В пустой список добавляем данные текущего дня
+                data.Add(new BpData());
             }
         }
 
@@ -70,10 +79,10 @@ namespace BP_GTAV_WpfApp
         {
             return data[index];
         }
-        public void Add(BpData bpData)
+        public void Change(BpData bpData)
         {
             // Получаем индекс записи с такой же датой
-            var dateExistIndex= data.FindIndex(d => d.Date == bpData.Date);
+            var dateExistIndex = data.FindIndex(d => d.Date == bpData.Date);
             if (dateExistIndex != -1)
             {
                 // Редактируем ее при наличии
@@ -81,7 +90,6 @@ namespace BP_GTAV_WpfApp
             }
             else
             {
-                // Добавляем новую
                 data.Add(bpData);
             }
         }

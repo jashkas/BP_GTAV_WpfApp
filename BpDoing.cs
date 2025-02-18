@@ -14,28 +14,28 @@ namespace BP_GTAV_WpfApp
         public BpDoing() { }
 
         [JsonProperty("mineDoing")]
-        public int Mine { get; set; } = 0;
+        public byte Mine { get; set; } = 0;
 
         [JsonProperty("constructionDoing")]
-        public int Construction { get; set; } = 0;
+        public byte Construction { get; set; } = 0;
 
         [JsonProperty("portDoing")]
-        public int Port { get; set; } = 0;
+        public byte Port { get; set; } = 0;
 
         [JsonProperty("postmanDoing")]
-        public int Postman { get; set; } = 0;
+        public byte Postman { get; set; } = 0;
 
         [JsonProperty("gymDoing")]
-        public int Gym { get; set; } = 0;
+        public byte Gym { get; set; } = 0;
 
         [JsonProperty("farmDoing")]
-        public int Farm { get; set; } = 0;
+        public byte Farm { get; set; } = 0;
 
         [JsonProperty("fireFighterDoing")]
-        public int FireFighter { get; set; } = 0;
+        public byte FireFighter { get; set; } = 0;
 
         [JsonProperty("lotteryDoing")]
-        public int Lottery { get; set; } = 0;
+        public byte Lottery { get; set; } = 0;
 
         [JsonProperty("movieStudioDoing")]
         public bool MovieStudio { get; set; } = false;
@@ -47,12 +47,14 @@ namespace BP_GTAV_WpfApp
         public bool ZerosCasinoDone { get; set; } = false;
 
         [JsonProperty("zerosCasinoAttemptDoing")]
-        public int ZerosCasinoAttempt { get; set; } = 0;
+        public byte ZerosCasinoAttempt { get; set; } = 0;
 
+        [JsonProperty("treasureDoneDoing")]
+        public byte TreasureDone { get; set; } = 0;
         [JsonProperty("treasureDoing")]
-        public int Treasure { get; set; } = 0;
+        public byte TreasureAttempt { get; set; } = 0;
 
         [JsonProperty("shootingRangeDoing")]
-        public int ShootingRange { get; set; } = 0;
+        public byte ShootingRange { get; set; } = 0;
     }
 }

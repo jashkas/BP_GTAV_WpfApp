@@ -41,8 +41,25 @@ namespace BP_GTAV_WpfApp
             ColorX2Button();
             ColorVipButton();
 
+            // Отображение сохранившихся данных
             dateField.Text = "Дата: " + data.Date;
-            bpField.Text = "BP: " + NumberFormater.FormatNumberWithMask(Bp.ToString());
+            //bpField.Text = "BP: " + NumberFormater.FormatNumberWithMask(Bp.ToString());
+            bpField.Text = "BP: " + (Bp + data.BpCounter.Somewhere).ToString();
+            countMailTextBox.Text = data.BpDoing.Postman.ToString();
+            countGymTextBox.Text = data.BpDoing.Gym.ToString();
+            countFarmTextBox.Text = data.BpDoing.Farm.ToString();
+            countFireFighteTextBox.Text = data.BpDoing.FireFighter.ToString();
+            countLotteryTicketTextBox.Text = data.BpDoing.Lottery.ToString();
+            movieStudioCheckBox.IsChecked = data.BpDoing.MovieStudio;
+            movieTheaterCheckBox.IsChecked = data.BpDoing.MovieTheater;
+            zerosCasinoDoneCheckBox.IsChecked = data.BpDoing.ZerosCasinoDone;
+            zerosCasinoAttemptTextBlock.Text = data.BpDoing.ZerosCasinoAttempt.ToString() + " нули в казино";
+            treasureCheckBox.IsChecked = data.BpDoing.TreasureDone >= 1;
+            treasureTextBlock.Text = data.BpDoing.TreasureAttempt.ToString() + " найти сокровище";
+            shootingRangeCheckBox.IsChecked = data.BpDoing.ShootingRange >= 1;
+            countMineTextBox.Text = data.BpDoing.Mine.ToString();
+            countConstructionTextBox.Text = data.BpDoing.Construction.ToString();
+            countPortTextBox.Text = data.BpDoing.Port.ToString();
         }
         private void ColorX2Button()
         {
@@ -85,14 +102,28 @@ namespace BP_GTAV_WpfApp
             // Сохранение переданного bp в BpData data
             data.Bp = Bp;
         }
+        private void AddBp_Click(object sender, EventArgs e)
+        {
+            data.BpCounter.Somewhere += byte.Parse(bpFieldAddTextBox.Text);
+        }
         private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
         {
             // подсчет бипишек на основе действий
-            data.BpCounter.SetBpByDoing(data.BpDoing);
+            // data.BpCounter.SetBpByDoing(data.BpDoing);
 
-            //BpFile file = new BpFile();
-            file.Add(data);
             file.Write();
+        }
+        private void PinMenuItem_Click(Object sender, RoutedEventArgs e)
+        {
+            this.Topmost = !this.Topmost;
+        }
+        public void RefreshBp_Click(object sender, RoutedEventArgs e)
+        {
+            //file.Change(data);
+            //file.Write();
+            //file = new BpFile();  // для чтения имеющегося количества бипишек
+            //data.Bp = file.data.Last().Bp + data.BpCounter.GetAmount();
+            bpField.Text = (data.Bp + data.BpCounter.Somewhere + data.BpCounter.GetAmount()).ToString();
         }
         private void VipButton_Click(object sender, RoutedEventArgs e)
         {
@@ -108,59 +139,68 @@ namespace BP_GTAV_WpfApp
         {
             data.BpDoing.Postman += 1;
             countMailTextBox.Text = data.BpDoing.Postman.ToString();
+            data.BpCounter.Postman = data.BpDoing.Postman;
         }
         private void MinusMailButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Postman -= 1;
             countMailTextBox.Text = data.BpDoing.Postman.ToString();
+            data.BpCounter.Postman = data.BpDoing.Postman;
         }
 
         private void PlusGymButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Gym += 1;
             countGymTextBox.Text = data.BpDoing.Gym.ToString();
+            data.BpCounter.Gym = data.BpDoing.Gym;
         }
 
         private void MinusGymButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Gym -= 1;
             countGymTextBox.Text = data.BpDoing.Gym.ToString();
+            data.BpCounter.Gym = data.BpDoing.Gym;
         }
 
         private void PlusFarmButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Farm += 1;
             countFarmTextBox.Text = data.BpDoing.Farm.ToString();
+            data.BpCounter.Farm = data.BpDoing.Farm;
         }
 
         private void MinusFarmButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Farm -= 1;
             countFarmTextBox.Text = data.BpDoing.Farm.ToString();
+            data.BpCounter.Farm = data.BpDoing.Farm;
         }
 
         private void PlusFireFighteButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.FireFighter += 1;
             countFireFighteTextBox.Text = data.BpDoing.FireFighter.ToString();
+            data.BpCounter.FireFighter = data.BpDoing.FireFighter;
         }
 
         private void MinusFireFighteButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.FireFighter -= 1;
             countFireFighteTextBox.Text = data.BpDoing.FireFighter.ToString();
+            data.BpCounter.FireFighter = data.BpDoing.FireFighter;
         }
 
-        private void LotteryTicketCheckBox_Click(object sender, RoutedEventArgs e)
+        private void PlusLotteryTicketButton_Click(object sender, RoutedEventArgs e)
         {
-            if (lotteryTicketCheckBox.IsChecked == true)
-            {
-                data.BpDoing.Lottery = 1;
-            }
-            else
-            {
-                data.BpDoing.Lottery = 0;
-            }
+            data.BpDoing.Lottery += 1;
+            countLotteryTicketTextBox.Text = data.BpDoing.Lottery.ToString();
+            data.BpCounter.Lottery = data.BpDoing.Lottery;
+        }
+        private void MinusLotteryTicketButton_Click(object sender, RoutedEventArgs e)
+        {
+            data.BpDoing.Lottery -= 1;
+            countLotteryTicketTextBox.Text = data.BpDoing.Lottery.ToString();
+            data.BpCounter.Lottery = data.BpDoing.Lottery;
         }
 
         private void MovieStudioCheckBox_Click(object sender, RoutedEventArgs e)
@@ -173,6 +213,7 @@ namespace BP_GTAV_WpfApp
             {
                 data.BpDoing.MovieStudio = false;
             }
+            data.BpCounter.MovieStudio = data.BpDoing.MovieStudio;
         }
 
         private void MovieTheaterCheckBox_Click(object sender, RoutedEventArgs e)
@@ -185,6 +226,7 @@ namespace BP_GTAV_WpfApp
             {
                 data.BpDoing.MovieTheater = false;
             }
+            data.BpCounter.MovieTheater = data.BpDoing.MovieTheater;
         }
 
         private void PlusZerosCasinoAttemptButton_Click(object sender, RoutedEventArgs e)
@@ -209,20 +251,30 @@ namespace BP_GTAV_WpfApp
             {
                 data.BpDoing.ZerosCasinoDone = false;
             }
+            data.BpCounter.ZerosCasinoDone = data.BpDoing.ZerosCasinoDone;
         }
-
+        private void PlusTreasureButton_Click(object sender, RoutedEventArgs e)
+        {
+            data.BpDoing.TreasureAttempt += 1;
+            treasureTextBlock.Text = data.BpDoing.TreasureAttempt.ToString() + " найти сокровище";
+        }
+        private void MinusTreasureButton_Click(object sender, RoutedEventArgs e)
+        {
+            data.BpDoing.TreasureAttempt -= 1;
+            treasureTextBlock.Text = data.BpDoing.TreasureAttempt.ToString() + " найти сокровище";
+        }
         private void TreasureCheckBox_Click(object sender, RoutedEventArgs e)
         {
             if (treasureCheckBox.IsChecked == true)
             {
-                data.BpDoing.Treasure = 1;
+                data.BpDoing.TreasureDone = 1;
             }
             else
             {
-                data.BpDoing.Treasure = 0;
+                data.BpDoing.TreasureDone = 0;
             }
+            data.BpCounter.Treasure = data.BpDoing.TreasureDone;
         }
-
         private void ShootingRangeCheckBox_Click(object sender, RoutedEventArgs e)
         {
             if (shootingRangeCheckBox.IsChecked == true)
@@ -233,37 +285,44 @@ namespace BP_GTAV_WpfApp
             {
                 data.BpDoing.ShootingRange = 0;
             }
+            data.BpCounter.ShootingRange = data.BpDoing.ShootingRange;
         }
 
         private void PlusMineButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Mine += 1;
             countMineTextBox.Text = data.BpDoing.Mine.ToString();
+            data.BpCounter.Mine = data.BpDoing.Mine;
         }
         private void MinusMinelButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Mine -= 1;
             countMineTextBox.Text = data.BpDoing.Mine.ToString();
+            data.BpCounter.Mine = data.BpDoing.Mine;
         }
         private void PlusConstructionButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Construction += 1;
             countConstructionTextBox.Text = data.BpDoing.Construction.ToString();
+            data.BpCounter.Construction = data.BpDoing.Construction;
         }
         private void MinusConstructionlButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Construction -= 1;
             countConstructionTextBox.Text = data.BpDoing.Construction.ToString();
+            data.BpCounter.Construction = data.BpDoing.Construction;
         }
         private void PlusPortButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Port += 1;
             countPortTextBox.Text = data.BpDoing.Port.ToString();
+            data.BpCounter.Port = data.BpDoing.Port;
         }
         private void MinusPortlButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Port -= 1;
             countPortTextBox.Text = data.BpDoing.Port.ToString();
+            data.BpCounter.Port = data.BpDoing.Port;
         }
     }
 }

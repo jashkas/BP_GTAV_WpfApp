@@ -35,10 +35,18 @@
             <MenuItem Header="С другом"/>
             <MenuItem Header="Сложно"/>
             <MenuItem Header="Сохранить" Click="SaveMenuItem_Click"/>
+            <MenuItem Header="Закреп" Click="PinMenuItem_Click"/>
         </Menu>
 
-        <TextBlock x:Name="bpField" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Text="BP" MouseLeftButtonDown="BpField_MouseLeftButtonDown"/>
-        
+        <Button Grid.Row="1" Grid.Column="0" Content="+" Click="AddBp_Click" />
+        <TextBox x:Name="bpFieldAddTextBox" Grid.Row="1" Grid.Column="1" Text="0" VerticalAlignment="Center" />
+        <TextBlock x:Name="bpField" Grid.Row="1" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" Text="BP" MouseLeftButtonDown="BpField_MouseLeftButtonDown"/>
+        <Button Grid.Row="1" Grid.Column="3" Width="25" Height="25" Click="RefreshBp_Click">
+            <Button.Content>
+                <Image Source="Images/reloading_by_kosonocon.png" Stretch="Uniform"/>
+            </Button.Content>
+        </Button>
+
         <Button Grid.Row="2" Grid.Column="0" x:Name="vipButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="VIP" Click="VipButton_Click" />
         <Button Grid.Row="2" Grid.Column="1" x:Name="x2Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="x2" Click="X2Button_Click" />
         <TextBlock x:Name="dateField" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Text="Дата"/>
@@ -63,8 +71,10 @@
         <TextBlock Grid.Row="6" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="пожарный"/>
         <Button Grid.Row="6" Grid.Column="3" Content="-" Click="MinusFireFighteButton_Click"/>
 
-        <CheckBox Grid.Row="7" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="lotteryTicketCheckBox" Click="LotteryTicketCheckBox_Click" />
-        <TextBlock Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="лотерейный билет"/>
+        <Button Grid.Row="7" Grid.Column="0" Content="+" Click="PlusLotteryTicketButton_Click" />
+        <TextBlock x:Name="countLotteryTicketTextBox" Grid.Row="7" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0"/>
+        <TextBlock Grid.Row="7" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="лотерейный билет"/>
+        <Button Grid.Row="7" Grid.Column="3" Content="-" Click="MinusLotteryTicketButton_Click" />
 
         <CheckBox Grid.Row="8" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="movieStudioCheckBox" Click="MovieStudioCheckBox_Click" />
         <TextBlock Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="киностудия"/>
@@ -74,11 +84,13 @@
 
         <Button Grid.Row="10" Grid.Column="0" Content="+" Click="PlusZerosCasinoAttemptButton_Click"/>
         <CheckBox Grid.Row="10" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="zerosCasinoDoneCheckBox" Click="ZerosCasinoCheckBox_Click" />
-        <TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="нули в казино"/>
+        <TextBlock x:Name="zerosCasinoAttemptTextBlock" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="нули в казино"/>
         <Button Grid.Row="10" Grid.Column="3" Content="-" Click="MinusZerosCasinoAttemptButton_Click"/>
 
-        <CheckBox Grid.Row="11" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="treasureCheckBox" Click="TreasureCheckBox_Click" />
-        <TextBlock Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="найти сокровище"/>
+        <Button Grid.Row="11" Grid.Column="0" Content="+" Click="PlusTreasureButton_Click"/>
+        <CheckBox Grid.Row="11" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="treasureCheckBox" Click="TreasureCheckBox_Click" />
+        <TextBlock x:Name="treasureTextBlock" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="найти сокровище"/>
+        <Button Grid.Row="11" Grid.Column="3" Content="-" Click="MinusTreasureButton_Click"/>
 
         <CheckBox Grid.Row="12" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="shootingRangeCheckBox" Click="ShootingRangeCheckBox_Click" />
         <TextBlock Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="тир"/>
