@@ -20,6 +20,11 @@ namespace BP_GTAV_WpfApp.Windows
     /// </summary>
     public partial class BpFieldEditor_Window : Window
     {
+        public BpFieldEditor_Window(int bp)
+        {
+            InitializeComponent();
+            bpFieldTextBox.Text = bp.ToString();
+        }
         public BpFieldEditor_Window()
         {
             InitializeComponent();
