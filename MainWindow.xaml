@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BP_GTAV_WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="MainWindow" Height="450" Width="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.7*"/>
@@ -28,7 +28,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
@@ -38,76 +38,53 @@
             <MenuItem Header="Закреп" Click="PinMenuItem_Click"/>
         </Menu>
 
-        <Button Grid.Row="1" Grid.Column="0" Content="+" Click="AddBp_Click" />
-        <TextBox x:Name="bpFieldAddTextBox" Grid.Row="1" Grid.Column="1" Text="0" VerticalAlignment="Center" />
         <TextBlock x:Name="bpField" Grid.Row="1" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" Text="BP" MouseLeftButtonDown="BpField_MouseLeftButtonDown"/>
-        <Button Grid.Row="1" Grid.Column="3" Width="25" Height="25" Click="RefreshBp_Click">
-            <Button.Content>
-                <Image Source="Images/reloading_by_kosonocon.png" Stretch="Uniform"/>
-            </Button.Content>
-        </Button>
 
         <Button Grid.Row="2" Grid.Column="0" x:Name="vipButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="VIP" Click="VipButton_Click" />
         <Button Grid.Row="2" Grid.Column="1" x:Name="x2Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="x2" Click="X2Button_Click" />
         <TextBlock x:Name="dateField" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" Text="Дата"/>
 
-        <Button Grid.Row="3" Grid.Column="0" Content="+" Click="PlusMailButton_Click"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countMailTextBox"/>
-        <TextBlock Grid.Row="3" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="почта"/>
-        <Button Grid.Row="3" Grid.Column="3" Content="-" Click="MinusMailButton_Click"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countMailTextBox"/>
+        <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" Content="почта" Click="PlusMailButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="-" Click="MinusMailButton_Click" />
 
-        <Button Grid.Row="4" Grid.Column="0" Content="+" Click="PlusGymButton_Click"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countGymTextBox"/>
-        <TextBlock Grid.Row="4" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="спортзал"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countGymTextBox"/>
+        <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="спортзал" Click="PlusGymButton_Click"/>
         <Button Grid.Row="4" Grid.Column="3" Content="-" Click="MinusGymButton_Click"/>
 
-        <Button Grid.Row="5" Grid.Column="0" Content="+" Click="PlusFarmButton_Click"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countFarmTextBox"/>
-        <TextBlock Grid.Row="5" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="ферма"/>
-        <Button Grid.Row="5" Grid.Column="3" Content="-" Click="MinusFarmButton_Click"/>
+        <CheckBox x:Name="farmButtonCheckBox" Grid.Row="5" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Click="FarmButtonCheckBox_Click" />
+        <TextBlock x:Name="farmButton" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" Text="ферма" />
 
-        <Button Grid.Row="6" Grid.Column="0" Content="+" Click="PlusFireFighteButton_Click"/>
-        <TextBlock Grid.Row="6" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countFireFighteTextBox"/>
-        <TextBlock Grid.Row="6" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="пожарный"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countFireFighteTextBox"/>
+        <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="пожарный" Click="PlusFireFighteButton_Click"/>
         <Button Grid.Row="6" Grid.Column="3" Content="-" Click="MinusFireFighteButton_Click"/>
 
-        <Button Grid.Row="7" Grid.Column="0" Content="+" Click="PlusLotteryTicketButton_Click" />
-        <TextBlock x:Name="countLotteryTicketTextBox" Grid.Row="7" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0"/>
-        <TextBlock Grid.Row="7" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="лотерейный билет"/>
-        <Button Grid.Row="7" Grid.Column="3" Content="-" Click="MinusLotteryTicketButton_Click" />
+        <TextBlock x:Name="countLotteryTicketTextBox" Grid.Row="7" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0"/>
+        <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="лотерейка" Click="PlusLotteryTicketButton_Click"/>
 
         <CheckBox Grid.Row="8" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="movieStudioCheckBox" Click="MovieStudioCheckBox_Click" />
-        <TextBlock Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="киностудия"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" Text="киностудия"/>
 
         <CheckBox Grid.Row="9" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="movieTheaterCheckBox" Click="MovieTheaterCheckBox_Click"/>
-        <TextBlock Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="5 видео в кинотеатре"/>
+        <TextBlock Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" TextWrapping="Wrap" Text="кинотеатр"/>
 
-        <Button Grid.Row="10" Grid.Column="0" Content="+" Click="PlusZerosCasinoAttemptButton_Click"/>
-        <CheckBox Grid.Row="10" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="zerosCasinoDoneCheckBox" Click="ZerosCasinoCheckBox_Click" />
-        <TextBlock x:Name="zerosCasinoAttemptTextBlock" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="нули в казино"/>
-        <Button Grid.Row="10" Grid.Column="3" Content="-" Click="MinusZerosCasinoAttemptButton_Click"/>
+        <Button x:Name="zerosCasinoAttemptButton" Grid.Row="10" Grid.Column="3" Content="+" Click="PlusZerosCasinoAttemptButton_Click"/>
+        <CheckBox Grid.Row="10" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="zerosCasinoDoneCheckBox" Click="ZerosCasinoCheckBox_Click" />
+        <TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Text="нули в казино"/>
 
-        <Button Grid.Row="11" Grid.Column="0" Content="+" Click="PlusTreasureButton_Click"/>
-        <CheckBox Grid.Row="11" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="treasureCheckBox" Click="TreasureCheckBox_Click" />
-        <TextBlock x:Name="treasureTextBlock" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="найти сокровище"/>
-        <Button Grid.Row="11" Grid.Column="3" Content="-" Click="MinusTreasureButton_Click"/>
+        <Button x:Name="treasureButton" Grid.Row="11" Grid.Column="3" Content="+" Click="PlusTreasureButton_Click"/>
+        <CheckBox Grid.Row="11" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="treasureCheckBox" Click="TreasureCheckBox_Click" />
+        <TextBlock Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Text="сокровище"/>
 
         <CheckBox Grid.Row="12" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="shootingRangeCheckBox" Click="ShootingRangeCheckBox_Click" />
-        <TextBlock Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="тир"/>
+        <TextBlock Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" Text="тир"/>
 
-        <Button Grid.Row="13" Grid.Column="0" Content="+" Click="PlusMineButton_Click"/>
-        <TextBlock Grid.Row="13" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countMineTextBox"/>
-        <TextBlock Grid.Row="13" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="шахта"/>
-        <Button Grid.Row="13" Grid.Column="3" Content="-" Click="MinusMinelButton_Click"/>
+        <Button Grid.Row="13" Grid.Column="3" Content="+" Click="PlusMineButton_Click"/>
+        <TextBlock Grid.Row="13" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countMineTextBox"/>
+        <Button Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="шахта"/>
 
-        <Button Grid.Row="14" Grid.Column="0" Content="+" Click="PlusConstructionButton_Click"/>
-        <TextBlock Grid.Row="14" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countConstructionTextBox"/>
-        <TextBlock Grid.Row="14" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="стройка"/>
-        <Button Grid.Row="14" Grid.Column="3" Content="-" Click="MinusConstructionlButton_Click"/>
+        <Button x:Name="constructionButton" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="стройка" Click="PlusConstructionButton_Click"/>
 
-        <Button Grid.Row="15" Grid.Column="0" Content="+" Click="PlusPortButton_Click"/>
-        <TextBlock Grid.Row="15" Grid.Column="1" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countPortTextBox"/>
-        <TextBlock Grid.Row="15" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="порт"/>
-        <Button Grid.Row="15" Grid.Column="3" Content="-" Click="MinusPortlButton_Click"/>
+        <Button x:Name="portButton" Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="порт" Click="PlusPortButton_Click"/>
     </Grid>
 </Window>

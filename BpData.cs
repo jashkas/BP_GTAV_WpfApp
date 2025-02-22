@@ -18,19 +18,14 @@ namespace BP_GTAV_WpfApp
         [JsonProperty("bpDoing")]
         public BpDoing BpDoing { get; set; }
 
-        [JsonProperty("bpCounter")]
-        public BpCounter BpCounter { get; set; }
-
         public BpData() 
         {
             this.BpDoing = new BpDoing();
-            this.BpCounter = new BpCounter(false, true);
         }
         public BpData(int bp)
         {
             this.Bp = bp;
             this.BpDoing = new BpDoing();
-            this.BpCounter = new BpCounter(false, true);
         }
     }
 }

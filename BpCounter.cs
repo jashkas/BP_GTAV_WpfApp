@@ -10,6 +10,7 @@ namespace BP_GTAV_WpfApp
     // BpCounter подсчитывает бипишки
     internal class BpCounter
     {
+        public BpCounter() { }
         public BpCounter(bool x2, bool vip)
         {
             this.X2 = x2;
@@ -21,16 +22,16 @@ namespace BP_GTAV_WpfApp
             CheckX2();
             return mine + construction + port + postman + gym + farm + fireFighter + lottery + movieStudio + movieTheater + zerosCasinoDone + treasure + shootingRange;
         }
-        [JsonProperty("x2")]
+        //[JsonProperty("x2")]
         public bool X2 { get; set; } = false;
 
-        [JsonProperty("vip")]
+        //[JsonProperty("vip")]
         public bool Vip { get; set; } = true;
 
-        [JsonProperty("somewhereCounter")]
+        //[JsonProperty("somewhereCounter")]
         public byte Somewhere { get; set; } = 0;
 
-        [JsonProperty("mineCounter")]
+        //[JsonProperty("mineCounter")]
         private byte mine = 0;
         public byte Mine 
         { 
@@ -38,7 +39,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 25) mine = 2; else mine = 0; }
         }
 
-        [JsonProperty("constructionCounter")]
+        //[JsonProperty("constructionCounter")]
         private byte construction = 0;
         public byte Construction 
         { 
@@ -46,7 +47,7 @@ namespace BP_GTAV_WpfApp
             set{ if (value >= 25) construction = 2; else construction = 0; } 
         }
 
-        [JsonProperty("portCounter")]
+        //[JsonProperty("portCounter")]
         private byte port = 0;
         public byte Port 
         {
@@ -54,7 +55,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 25) port = 2; else port = 0; }
         }
 
-        [JsonProperty("postmanCounter")]
+        //[JsonProperty("postmanCounter")]
         private byte postman = 0;
         public byte Postman
         {
@@ -62,7 +63,7 @@ namespace BP_GTAV_WpfApp
             set  { if (value >= 10) postman = 1; else postman = 0; }
         }
 
-        [JsonProperty("gymCounter")]
+        //[JsonProperty("gymCounter")]
         private byte gym = 0;
         public byte Gym 
         {
@@ -70,7 +71,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 20) gym = 1; else gym = 0; }
         }
 
-        [JsonProperty("farmCounter")]
+        //[JsonProperty("farmCounter")]
         private byte farm = 0;
         public byte Farm 
         {
@@ -78,7 +79,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 10) farm = 1; else farm = 0; }
         }
 
-        [JsonProperty("fireFighterCounter")]
+        //[JsonProperty("fireFighterCounter")]
         private byte fireFighter = 0;
         public byte FireFighter 
         {
@@ -86,7 +87,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 10) fireFighter = 2; else fireFighter = 0; }
         }
 
-        [JsonProperty("lotteryCounter")]
+        //[JsonProperty("lotteryCounter")]
         private byte lottery = 0;
         public byte Lottery 
         { 
@@ -94,7 +95,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 1)  lottery = 1; else lottery = 0; }
         }
 
-        [JsonProperty("movieStudioCounter")]
+        //[JsonProperty("movieStudioCounter")]
         private byte movieStudio = 0;
         public bool MovieStudio
         {
@@ -110,7 +111,7 @@ namespace BP_GTAV_WpfApp
             }
         }
 
-        [JsonProperty("movieTheaterCounter")]
+        //[JsonProperty("movieTheaterCounter")]
         private byte movieTheater = 0;
         public bool MovieTheater
         {
@@ -126,7 +127,7 @@ namespace BP_GTAV_WpfApp
             }
         }
 
-        [JsonProperty("zerosCasinoDoneCounter")]
+        //[JsonProperty("zerosCasinoDoneCounter")]
         private byte zerosCasinoDone = 0;
         public bool ZerosCasinoDone
     {
@@ -142,7 +143,7 @@ namespace BP_GTAV_WpfApp
             }
         }
 
-        [JsonProperty("treasureCounter")]
+        //[JsonProperty("treasureCounter")]
         private byte treasure = 0;
         public byte Treasure
         {
@@ -150,7 +151,7 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 1) treasure = 1; else treasure = 0; }
         }
 
-        [JsonProperty("shootingRangeCounter")]
+        //[JsonProperty("shootingRangeCounter")]
         private byte shootingRange = 0;
         public byte ShootingRange
         {
