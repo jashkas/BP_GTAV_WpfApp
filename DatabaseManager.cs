@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 
 namespace BP_GTAV_WpfApp
 {
@@ -104,7 +106,36 @@ namespace BP_GTAV_WpfApp
 
         public void InsertBpData(BpData bpData)
         {
+            // TODO прежде чем добавлять нужно убедиться что на эту дату нет записи
+            // а если есть, то обновить ее
             int bpDoingId = InsertBpDoing(bpData.BpDoing);
+
+            List<BpData> latest = GetBpData(false);
+            if (latest.Count > 0)
+            {
+                BpData bp = latest.Last();
+                if (bp.Date == DateTime.Now.ToShortDateString())
+                {
+                    using (var connection = new SQLiteConnection(ConnectionString))
+                    {
+                        connection.Open();
+
+                        string insertQuery = @"
+                            Update BpData
+                            SET (@Bp, @Date, @BpDoingId)
+                            WHERE Date == @Date;";
+
+                        using (var command = new SQLiteCommand(insertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Bp", bpData.Bp);
+                            command.Parameters.AddWithValue("@Date", bpData.Date);
+                            command.Parameters.AddWithValue("@BpDoingId", bpDoingId);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
 
             using (var connection = new SQLiteConnection(ConnectionString))
             {
@@ -112,7 +143,8 @@ namespace BP_GTAV_WpfApp
 
                 string insertQuery = @"
                     INSERT INTO BpData (Bp, Date, BpDoingId)
-                    VALUES (@Bp, @Date, @BpDoingId);";
+                    VALUES (@Bp, @Date, @BpDoingId)
+                    WHERE Date != @Date;";
 
                 using (var command = new SQLiteCommand(insertQuery, connection))
                 {
@@ -125,7 +157,7 @@ namespace BP_GTAV_WpfApp
             }
         }
 
-        public BpData GetLatestBpData()
+        public List<BpData> GetBpData(bool all)
         {
             using (var connection = new SQLiteConnection(ConnectionString))
             {
@@ -135,13 +167,18 @@ namespace BP_GTAV_WpfApp
                     SELECT Bp, Date, Mine, Construction, Port, Postman, Gym, Farm, FireFighter, Lottery, MovieStudio, MovieTheater, ZerosCasinoDone, ZerosCasinoAttempt, TreasureDone, TreasureAttempt, ShootingRange
                     FROM BpData
                     JOIN BpDoing ON BpData.BpDoingId = BpDoing.Id
-                    ORDER BY BpData.Id DESC
-                    LIMIT 1;";
+                    ORDER BY BpData.Id DESC ";
+
+                if (all == false)
+                {
+                    query += " LIMIT 1;";
+                }
 
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
+                        List<BpData> list = new List<BpData>();
                         if (reader.Read())
                         {
                             var bpDoing = new BpDoing
@@ -163,18 +200,19 @@ namespace BP_GTAV_WpfApp
                                 ShootingRange = Convert.ToByte(reader["ShootingRange"])
                             };
 
-                            return new BpData
+                            list.Add(new BpData
                             {
                                 Bp = Convert.ToInt32(reader["Bp"]),
                                 Date = reader["Date"].ToString(),
                                 BpDoing = bpDoing
-                            };
+                            });
                         }
+                        if (list.Count > 0)
+                            return list;
+                        return null;
                     }
                 }
             }
-
-            return null;
         }
     }
 }
