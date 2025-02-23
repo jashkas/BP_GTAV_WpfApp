@@ -79,9 +79,8 @@
         <CheckBox Grid.Row="12" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="shootingRangeCheckBox" Click="ShootingRangeCheckBox_Click" />
         <TextBlock Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" Text="тир"/>
 
-        <Button Grid.Row="13" Grid.Column="3" Content="+" Click="PlusMineButton_Click"/>
-        <TextBlock Grid.Row="13" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countMineTextBox"/>
-        <Button Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="шахта"/>
+        <Button x:Name="countMineButton" Grid.Row="13" Grid.Column="3" Content="+" Click="PlusMineButton_Click"/>
+        <TextBlock Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Text="шахта"/>
 
         <Button x:Name="constructionButton" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="стройка" Click="PlusConstructionButton_Click"/>
 

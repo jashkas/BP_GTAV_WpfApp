@@ -25,6 +25,7 @@ namespace BP_GTAV_WpfApp
     {
         private readonly BpData data;
         private readonly BpCounter bpCounter;
+        private readonly DatabaseManager db;
 
         BpFile file;
         internal int Bp { get; set; } = 0;  // Для редактирования из окна BpFieldEditor_Window
@@ -36,9 +37,25 @@ namespace BP_GTAV_WpfApp
             // Закрепляем окно поверх всех окон
             this.Topmost = true;
 
+            db = new DatabaseManager();  // инициализация базы данных
+
             bpCounter = new BpCounter();
             file = new BpFile();  // для чтения имеющегося количества бипишек
             data = file.data.Last();
+
+            // Получение последних данных
+            BpData latestData = (db.GetBpData(false)).Last();
+            // Если данных в базе нет, то при первом запуске они внесутся
+            if (latestData == null)
+            {
+                BpFile bpFile = new BpFile();
+                foreach (BpData d in bpFile.data)
+                {
+                    db.InsertBpData(d);
+                }
+                latestData = (db.GetBpData(false)).Last();
+            }
+            Console.WriteLine($"Последние данные: {latestData.Bp}, {latestData.Date}");
 
             Bp = data.Bp;
             ColorX2Button();
@@ -59,7 +76,19 @@ namespace BP_GTAV_WpfApp
             treasureCheckBox.IsChecked = data.BpDoing.TreasureDone >= 1;
             treasureButton.Content = data.BpDoing.TreasureAttempt.ToString();
             shootingRangeCheckBox.IsChecked = data.BpDoing.ShootingRange >= 1;
-            countMineTextBox.Text = data.BpDoing.Mine.ToString();
+            countMineButton.Content = data.BpDoing.Mine.ToString();
+            if (data.BpDoing.Mine >= 25)
+            {
+                SetGreenText(countMineButton);
+            }
+            if (data.BpDoing.Construction >= 25)
+            {
+                SetGreenText(constructionButton);
+            }
+            if (data.BpDoing.Port >= 25)
+            {
+                SetGreenText(portButton);
+            }
         }
         private void SetGreenText(Button sender)
         {
@@ -94,7 +123,16 @@ namespace BP_GTAV_WpfApp
         private void BpField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Topmost = false;
-            BpFieldEditor_Window window = new BpFieldEditor_Window();
+
+            BpFieldEditor_Window window;
+            if (data.Bp > 0)
+            {
+                window = new BpFieldEditor_Window(data.Bp);
+            }
+            else
+            {
+                window = new BpFieldEditor_Window();
+            }
 
             // Подписываемся на событие Closed
             window.Closed += BpFieldEditorWindow_Closed;
@@ -115,6 +153,9 @@ namespace BP_GTAV_WpfApp
             // bpCounter.SetBpByDoing(data.BpDoing);
 
             file.Write();
+
+            // Сохранение данных
+            //db.InsertBpData(data);
         }
         private void PinMenuItem_Click(Object sender, RoutedEventArgs e)
         {
@@ -264,8 +305,12 @@ namespace BP_GTAV_WpfApp
         private void PlusMineButton_Click(object sender, RoutedEventArgs e)
         {
             data.BpDoing.Mine += 1;
-            countMineTextBox.Text = data.BpDoing.Mine.ToString();
+            countMineButton.Content = data.BpDoing.Mine.ToString();
             bpCounter.Mine = data.BpDoing.Mine;
+            if (data.BpDoing.Mine >= 25)
+            {
+                SetGreenText(countMineButton);
+            }
         }
         private void PlusConstructionButton_Click(object sender, RoutedEventArgs e)
         {
