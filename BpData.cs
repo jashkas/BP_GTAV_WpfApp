@@ -18,16 +18,19 @@ namespace BP_GTAV_WpfApp
         [JsonProperty("bpDoing")]
         public BpDoing BpDoing { get; set; }
 
-        
+        [JsonProperty("withFriendDoing")]
+        public WithFriendDoing WithFriendDoing { get; set; }
 
         public BpData() 
         {
             this.BpDoing = new BpDoing();
+            this.WithFriendDoing = new WithFriendDoing();
         }
         public BpData(int bp)
         {
             this.Bp = bp;
             this.BpDoing = new BpDoing();
+            this.WithFriendDoing = new WithFriendDoing();
         }
     }
 }

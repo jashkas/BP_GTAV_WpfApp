@@ -24,6 +24,8 @@ namespace BP_GTAV_WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public WithFriendDoing withFriend;
+
         private readonly BpData data;
         private readonly BpCounter bpCounter;
         private readonly DatabaseManager db;
@@ -59,6 +61,7 @@ namespace BP_GTAV_WpfApp
             Console.WriteLine($"Последние данные: {latestData.Bp}, {latestData.Date}");
 
             Bp = data.Bp;
+            withFriend = data.WithFriendDoing;
             ColorX2Button();
             ColorVipButton();
 
@@ -127,8 +130,7 @@ namespace BP_GTAV_WpfApp
         }
         private void MenuItemFriend_Click(object sender, RoutedEventArgs e)
         {
-            WithFriend_BP window = new WithFriend_BP();
-            window.Show();
+            WithFriend_BP.ShowSingleInstance(this);
         }
         private void BpField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

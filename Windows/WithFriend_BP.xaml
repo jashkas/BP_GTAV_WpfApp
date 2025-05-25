@@ -16,35 +16,29 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
 
         <Button Grid.Row="0" Grid.Column="0" Content="+" x:Name="plusClubButton" Click="PlusClubButton_Click"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countClubTextBlock"/>
-        <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="клуб"/>
-        <TextBlock Grid.Row="0" Grid.Column="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countClubFriendTextBlock"/>
-        <Button Grid.Row="0" Grid.Column="4" Content="+Д" x:Name="plusClubFriendButton" Click="PlusClubFriendButton_Click"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="клуб"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="+Д" x:Name="plusClubFriendButton" Click="PlusClubFriendButton_Click"/>
 
         <CheckBox Grid.Row="1" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingCheckBox" Click="KartingCheckBox_Click"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="картинг"/>
-        <CheckBox Grid.Row="1" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingFriendCheckBox" Click="KartingFriendCheckBox_Click"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="картинг"/>
+        <CheckBox Grid.Row="1" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingFriendCheckBox" Click="KartingFriendCheckBox_Click"/>
 
         <CheckBox Grid.Row="2" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceCheckBox" Click="StreetRaceCheckBox_Click"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="уличная гонка"/>
-        <CheckBox Grid.Row="2" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceFriendCheckBox" Click="StreetRaceFriendCheckBox_Click"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="уличная гонка"/>
+        <CheckBox Grid.Row="2" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceFriendCheckBox" Click="StreetRaceFriendCheckBox_Click"/>
 
-        <Button Grid.Row="3" Grid.Column="0" Content="+" Click="PlusTrainingComplexButton_Click"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countTrainingComplexTextBlock"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="трен. комп."/>
-        <TextBlock Grid.Row="3" Grid.Column="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countTrainingComplexFriendTextBlock"/>
-        <Button Grid.Row="3" Grid.Column="4" Content="+Д" Click="PlusTrainingComplexFriendButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="+" x:Name="trainingComplexButton" Click="PlusTrainingComplexButton_Click"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="тренир. компл."/>
+        <Button Grid.Row="3" Grid.Column="2" Content="+Д" x:Name="trainingComplexFriendButton" Click="PlusTrainingComplexFriendButton_Click"/>
 
         <CheckBox Grid.Row="4" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaRaceCheckBox" Click="ArenaRaceCheckBox_Click"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="арена"/>
-        <CheckBox Grid.Row="4" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaFriendRaceCheckBox" Click="ArenaFriendRaceCheckBox_Click"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="арена"/>
+        <CheckBox Grid.Row="4" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaFriendRaceCheckBox" Click="ArenaFriendRaceCheckBox_Click"/>
         
     </Grid>
 </Window>

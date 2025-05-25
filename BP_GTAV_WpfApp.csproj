@@ -126,6 +126,7 @@
     <Compile Include="Windows\WithFriend_BP.xaml.cs">
       <DependentUpon>WithFriend_BP.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WithFriendDoing.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

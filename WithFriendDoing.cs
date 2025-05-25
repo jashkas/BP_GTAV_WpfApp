@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace BP_GTAV_WpfApp
 {
     // Данный класс подсчитывает действия, выполненные с другом
-    internal class WithFriendDoing
+    public class WithFriendDoing
     {
         public WithFriendDoing() { }
 
