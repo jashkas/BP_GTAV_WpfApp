@@ -159,6 +159,30 @@ namespace BP_GTAV_WpfApp
             set { if (value >= 1) shootingRange = 1; else shootingRange = 0; }
         }
 
+        //[JsonProperty("huntingDoneCounter")]
+        private byte huntingDone = 0;
+        public bool HuntingDone
+        {
+            get
+            {
+                // Логика получения: если значение 2 - true, иначе - false
+                return huntingDone == 5;
+            }
+            set
+            {
+                // Логика записи: если значение true - установить 2, иначе - 0
+                huntingDone = (byte)(value ? 5 : 0);
+            }
+        }
+
+        //[JsonProperty("busCounter")]
+        private byte bus = 0;
+        public byte Bus
+        {
+            get { return treasure; }
+            set { if (value >= 2) treasure = 2; else treasure = 0; }
+        }
+
         public void SetBpByDoing(BpDoing bpDoing)
         {
             if (bpDoing != null)
@@ -214,6 +238,14 @@ namespace BP_GTAV_WpfApp
                 if (bpDoing.ShootingRange >= 1)
                 {
                     ShootingRange = 1;
+                }
+                if (bpDoing.HuntingDone == true)
+                {
+                    huntingDone = 5;
+                }
+                if (bpDoing.Bus >= 2)
+                {
+                    Bus = 2;
                 }
                 CheckVip();
                 CheckX2();

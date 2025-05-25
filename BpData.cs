@@ -18,6 +18,8 @@ namespace BP_GTAV_WpfApp
         [JsonProperty("bpDoing")]
         public BpDoing BpDoing { get; set; }
 
+        
+
         public BpData() 
         {
             this.BpDoing = new BpDoing();

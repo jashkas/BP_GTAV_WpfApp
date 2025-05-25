@@ -26,6 +26,14 @@ namespace BP_GTAV_WpfApp
         // Чтение данных
         public void Read()
         {
+            // Проверяем существует ли файл
+            if (!System.IO.File.Exists(fileName))
+            {
+                // Если файла нет - создаем его с пустым массивом
+                System.IO.File.WriteAllText(fileName, "[]");
+            }
+
+            // Читаем данные из файла
             using (StreamReader file = System.IO.File.OpenText(fileName))
             {
                 JsonSerializer serializer = new JsonSerializer();

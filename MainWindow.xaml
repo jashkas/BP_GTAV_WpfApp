@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BP_GTAV_WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="250">
+        Title="MainWindow" Height="500" Width="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -32,8 +34,11 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
-            <MenuItem Header="С другом"/>
-            <MenuItem Header="Сложно"/>
+            <MenuItem Header="Файл">
+                <MenuItem Header="С другом" Click="MenuItemFriend_Click"/>
+                <MenuItem Header="Сложно"/>
+            </MenuItem>
+                
             <MenuItem Header="Сохранить" Click="SaveMenuItem_Click"/>
             <MenuItem Header="Закреп" Click="PinMenuItem_Click"/>
         </Menu>
@@ -53,7 +58,7 @@
         <Button Grid.Row="4" Grid.Column="3" Content="-" Click="MinusGymButton_Click"/>
 
         <CheckBox x:Name="farmButtonCheckBox" Grid.Row="5" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Click="FarmButtonCheckBox_Click" />
-        <TextBlock x:Name="farmButton" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" Text="ферма" />
+        <TextBlock x:Name="farmTextBlock" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" Text="ферма" />
 
         <TextBlock Grid.Row="6" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countFireFighteTextBox"/>
         <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="пожарный" Click="PlusFireFighteButton_Click"/>
@@ -85,5 +90,12 @@
         <Button x:Name="constructionButton" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="стройка" Click="PlusConstructionButton_Click"/>
 
         <Button x:Name="portButton" Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" Content="порт" Click="PlusPortButton_Click"/>
+
+        <CheckBox Grid.Row="16" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countHuntingCheckBox" Click="HuntingCheckBox_Click" />
+        <TextBlock Grid.Row="16" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" Text="охота"/>
+        <Button x:Name="huntingAttemptButton" Grid.Row="16" Grid.Column="3" Content="+" Click="PlusHuntingButton_Click" />
+
+        <TextBlock Grid.Row="17" Grid.Column="0" Text="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="countBusTextBox"/>
+        <Button Grid.Row="17" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" Content="автобус" Click="PlusBusButton_Click"/>
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BP_GTAV_WpfApp.Windows"
         mc:Ignorable="d"
-        Title="BpFieldEditor_Window" Height="100" Width="200">
+        Title="BpFieldEditor_Window" Height="100" Width="200" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BP_GTAV_WpfApp"
         mc:Ignorable="d"
-        Title="WithFriend_BP" Height="350" Width="300">
+        Title="WithFriend_BP" Height="150" Width="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -28,23 +28,23 @@
         <TextBlock Grid.Row="0" Grid.Column="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countClubFriendTextBlock"/>
         <Button Grid.Row="0" Grid.Column="4" Content="+Д" x:Name="plusClubFriendButton" Click="PlusClubFriendButton_Click"/>
 
-        <CheckBox Grid.Row="1" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingCheckBox"/>
+        <CheckBox Grid.Row="1" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingCheckBox" Click="KartingCheckBox_Click"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="картинг"/>
-        <CheckBox Grid.Row="1" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingFriendCheckBox"/>
+        <CheckBox Grid.Row="1" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="kartingFriendCheckBox" Click="KartingFriendCheckBox_Click"/>
 
-        <CheckBox Grid.Row="2" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceCheckBox"/>
+        <CheckBox Grid.Row="2" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceCheckBox" Click="StreetRaceCheckBox_Click"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="уличная гонка"/>
-        <CheckBox Grid.Row="2" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceFriendCheckBox"/>
+        <CheckBox Grid.Row="2" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="streetRaceFriendCheckBox" Click="StreetRaceFriendCheckBox_Click"/>
 
-        <Button Grid.Row="3" Grid.Column="0" Content="+" x:Name="plusTrainingComplexButton" Click="PlusTrainingComplexButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="+" Click="PlusTrainingComplexButton_Click"/>
         <TextBlock Grid.Row="3" Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countTrainingComplexTextBlock"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="тренировочный комплекс"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="трен. комп."/>
         <TextBlock Grid.Row="3" Grid.Column="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" x:Name="countTrainingComplexFriendTextBlock"/>
-        <Button Grid.Row="3" Grid.Column="4" Content="+Д" x:Name="plusTrainingComplexFriendButton" Click="PlusTrainingComplexButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="4" Content="+Д" Click="PlusTrainingComplexFriendButton_Click"/>
 
-        <CheckBox Grid.Row="4" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaRaceCheckBox"/>
+        <CheckBox Grid.Row="4" Grid.Column="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaRaceCheckBox" Click="ArenaRaceCheckBox_Click"/>
         <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="арена"/>
-        <CheckBox Grid.Row="4" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaFriendRaceCheckBox"/>
+        <CheckBox Grid.Row="4" Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="arenaFriendRaceCheckBox" Click="ArenaFriendRaceCheckBox_Click"/>
         
     </Grid>
 </Window>

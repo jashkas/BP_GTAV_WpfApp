@@ -56,5 +56,14 @@ namespace BP_GTAV_WpfApp
 
         [JsonProperty("shootingRangeDoing")]
         public byte ShootingRange { get; set; } = 0;
+
+        [JsonProperty("huntingDoneDoing")]
+        public bool HuntingDone { get; set; } = false;
+
+        [JsonProperty("huntingAttemptDoing")]
+        public byte huntingAttemptDoing { get; set; } = 0;
+
+        [JsonProperty("busDoing")]
+        public byte Bus { get; set; } = 0;
     }
 }

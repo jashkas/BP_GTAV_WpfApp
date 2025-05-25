@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -67,6 +68,7 @@ namespace BP_GTAV_WpfApp
             bpField.Text = "BP: " + (Bp + bpCounter.Somewhere).ToString();
             countMailTextBox.Text = data.BpDoing.Postman.ToString();
             countGymTextBox.Text = data.BpDoing.Gym.ToString();
+            farmButtonCheckBox.IsChecked = data.BpDoing.Farm >= 10;
             countFireFighteTextBox.Text = data.BpDoing.FireFighter.ToString();
             countLotteryTicketTextBox.Text = data.BpDoing.Lottery.ToString();
             movieStudioCheckBox.IsChecked = data.BpDoing.MovieStudio;
@@ -77,6 +79,9 @@ namespace BP_GTAV_WpfApp
             treasureButton.Content = data.BpDoing.TreasureAttempt.ToString();
             shootingRangeCheckBox.IsChecked = data.BpDoing.ShootingRange >= 1;
             countMineButton.Content = data.BpDoing.Mine.ToString();
+            countHuntingCheckBox.IsChecked = data.BpDoing.HuntingDone;
+            huntingAttemptButton.Content = data.BpDoing.huntingAttemptDoing.ToString();
+            countBusTextBox.Text = data.BpDoing.Bus.ToString();
             if (data.BpDoing.Mine >= 25)
             {
                 SetGreenText(countMineButton);
@@ -120,6 +125,11 @@ namespace BP_GTAV_WpfApp
                 SetBlackText(vipButton);
             }
         }
+        private void MenuItemFriend_Click(object sender, RoutedEventArgs e)
+        {
+            WithFriend_BP window = new WithFriend_BP();
+            window.Show();
+        }
         private void BpField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Topmost = false;
@@ -146,6 +156,28 @@ namespace BP_GTAV_WpfApp
             bpField.Text = "BP: " + NumberFormater.FormatNumberWithMask(Bp.ToString());
             // Сохранение переданного bp в BpData data
             data.Bp = Bp;
+        }
+        private void BpFieldTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Проверяем, является ли вводимое значение числом
+            e.Handled = !Regex.IsMatch(e.Text, @"^\d$");
+        }
+
+        private void BpFieldTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            // Убираем курсор, чтобы избежать мерцания
+            int caretIndex = textBox.CaretIndex;
+
+            // Удаляем пробелы и форматируем заново
+            string digitsOnly = Regex.Replace(textBox.Text, @"\s+", ""); // Убираем пробелы
+            //string formatted = NumberFormater.FormatNumberWithMask(digitsOnly);
+
+            textBox.Text = digitsOnly;
+
+            // Восстанавливаем позицию курсора
+            textBox.CaretIndex = caretIndex > textBox.Text.Length ? textBox.Text.Length : caretIndex;
         }
         private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -323,6 +355,29 @@ namespace BP_GTAV_WpfApp
             data.BpDoing.Port = 25;
             bpCounter.Port = data.BpDoing.Port;
             SetGreenText(portButton);
+        }
+        private void PlusHuntingButton_Click(object sender, RoutedEventArgs e)
+        {
+            data.BpDoing.huntingAttemptDoing += 1;
+            huntingAttemptButton.Content = data.BpDoing.huntingAttemptDoing.ToString();
+        }
+        private void HuntingCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (countHuntingCheckBox.IsChecked == true)
+            {
+                data.BpDoing.HuntingDone = true;
+            }
+            else
+            {
+                data.BpDoing.HuntingDone = false;
+            }
+            bpCounter.ZerosCasinoDone = data.BpDoing.ZerosCasinoDone;
+        }
+        private void PlusBusButton_Click(object sender, RoutedEventArgs e)
+        {
+            data.BpDoing.Bus += 1;
+            countBusTextBox.Text = data.BpDoing.Bus.ToString();
+            bpCounter.Bus = data.BpDoing.Bus;
         }
     }
 }

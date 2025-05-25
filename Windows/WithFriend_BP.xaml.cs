@@ -33,6 +33,24 @@ namespace BP_GTAV_WpfApp
         {
 
         }
+        private void KartingCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void KartingFriendCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void StreetRaceCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void StreetRaceFriendCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void PlusTrainingComplexButton_Click(Object sender, RoutedEventArgs args)
         {
@@ -40,6 +58,16 @@ namespace BP_GTAV_WpfApp
         }
 
         private void PlusTrainingComplexFriendButton_Click(object sender, RoutedEventArgs args) 
+        {
+
+        }
+
+        private void ArenaRaceCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ArenaFriendRaceCheckBox_Click(object sender, RoutedEventArgs e)
         {
 
         }
